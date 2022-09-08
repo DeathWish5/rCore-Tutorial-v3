@@ -66,8 +66,8 @@ pub fn rust_main() -> ! {
 
     #[cfg(feature = "board_qemu")]
     crate::board::QEMU_EXIT_HANDLE.exit_success(); // CI autotest success
+    #[cfg(feature = "board_qemu")]
     //crate::board::QEMU_EXIT_HANDLE.exit_failure(); // CI autoest failed
-
     #[cfg(feature = "board_k210")]
     panic!("Unreachable in rust_main!");
 }

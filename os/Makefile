@@ -71,8 +71,6 @@ disasm-vim: kernel
 
 run: run-inner
 
-	
-
 run-inner: build
 ifeq ($(BOARD),qemu)
 	@qemu-system-riscv64 \
@@ -101,5 +99,10 @@ gdbserver: build
 
 gdbclient:
 	@riscv64-unknown-elf-gdb -ex 'file $(KERNEL_ELF)' -ex 'set arch riscv:rv64' -ex 'target remote localhost:1234'
+
+check:
+	cargo fmt --all -- --check
+	cargo check --target $(TARGET) --features "board_$(BOARD)"
+	cargo clippy --target $(TARGET) --features "board_$(BOARD)"
 
 .PHONY: build env kernel clean disasm disasm-vim run-inner switch-check gdbserver gdbclient
