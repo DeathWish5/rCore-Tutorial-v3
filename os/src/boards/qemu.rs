@@ -1,4 +1,5 @@
 pub const CLOCK_FREQ: usize = 12500000;
+#[allow(dead_code)]
 pub const MEMORY_END: usize = 0x801000000;
 
 pub const MMIO: &[(usize, usize)] = &[
