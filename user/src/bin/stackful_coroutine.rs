@@ -4,7 +4,6 @@
 #![no_std]
 #![no_main]
 #![feature(naked_functions)]
-#![feature(asm)]
 
 extern crate alloc;
 #[macro_use]
@@ -12,7 +11,6 @@ extern crate user_lib;
 
 use core::arch::asm;
 
-#[macro_use]
 use alloc::vec;
 use alloc::vec::Vec;
 
@@ -35,6 +33,7 @@ enum State {
     Ready,
 }
 
+#[allow(dead_code)]
 struct Task {
     id: usize,
     stack: Vec<u8>,
